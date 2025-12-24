@@ -177,3 +177,4 @@ C:\Users\admin\SeleniumLab5\obj\Debug\net9.0\refint\SeleniumLab5.dll
 C:\Users\admin\SeleniumLab5\obj\Debug\net9.0\SeleniumLab5.pdb
 C:\Users\admin\SeleniumLab5\obj\Debug\net9.0\SeleniumLab5.genruntimeconfig.cache
 C:\Users\admin\SeleniumLab5\obj\Debug\net9.0\ref\SeleniumLab5.dll
+C:\Users\admin\SeleniumLab5\obj\Debug\net9.0\SeleniumLab5.sourcelink.json

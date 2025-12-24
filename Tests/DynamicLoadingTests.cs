@@ -13,8 +13,14 @@ namespace SeleniumLab5.Tests
 
             driver.FindElement(By.TagName("button")).Click();
 
-            var text = wait!.Until(d => d.FindElement(By.Id("finish"))).Text;
-            Assert.That(text, Is.EqualTo("Hello World!"));
+            // очікуємо поки елемент з’явиться та текст стане ненульовим
+            var finishElement = wait!.Until(d =>
+            {
+                var elem = d.FindElement(By.Id("finish"));
+                return elem.Displayed && !string.IsNullOrEmpty(elem.Text) ? elem : null;
+            });
+
+            Assert.That(finishElement.Text, Is.EqualTo("Hello World!"));
         }
     }
 }

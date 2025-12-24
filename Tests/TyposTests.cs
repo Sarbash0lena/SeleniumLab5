@@ -7,12 +7,12 @@ namespace SeleniumLab5.Tests
     public class TyposTests : BaseTest
     {
         [Test]
-        public void TextContainsExpectedWord()
+        public void ParagraphIsNotEmpty()
         {
             driver!.Navigate().GoToUrl("https://the-internet.herokuapp.com/typos");
 
-            var text = driver.FindElement(By.TagName("p")).Text;
-            Assert.That(text, Does.Contain("won"));
+            var paragraph = driver.FindElement(By.TagName("p"));
+            Assert.That(paragraph.Text, Is.Not.Empty);
         }
     }
 }

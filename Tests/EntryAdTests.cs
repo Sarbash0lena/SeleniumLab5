@@ -11,10 +11,21 @@ namespace SeleniumLab5.Tests
         {
             driver!.Navigate().GoToUrl("https://the-internet.herokuapp.com/entry_ad");
 
-            var closeButton = wait!.Until(d => d.FindElement(By.CssSelector(".modal-footer p")));
+            // дочекатися, поки модалка з’явиться
+            var modal = wait!.Until(d =>
+            {
+                var elem = d.FindElement(By.CssSelector(".modal"));
+                return elem.Displayed ? elem : null;
+            });
+
+            // тепер дочекатися, поки кнопка закриття буде клікабельною
+            var closeButton = modal.FindElement(By.CssSelector(".modal-footer p"));
+            wait.Until(d => closeButton.Enabled && closeButton.Displayed);
+
             closeButton.Click();
 
-            Assert.Pass();
+            // перевірка: модалка тепер невидима
+            Assert.That(modal.Displayed, Is.False);
         }
     }
 }

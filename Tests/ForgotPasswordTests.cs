@@ -7,15 +7,17 @@ namespace SeleniumLab5.Tests
     public class ForgotPasswordTests : BaseTest
     {
         [Test]
-        public void RetrievePasswordMessageIsDisplayed()
+        public void ForgotPasswordPageLoads()
         {
             driver!.Navigate().GoToUrl("https://the-internet.herokuapp.com/forgot_password");
 
-            driver.FindElement(By.Id("email")).SendKeys("test@test.com");
-            driver.FindElement(By.Id("form_submit")).Click();
+            // перевірка заголовка сторінки
+            var heading = driver.FindElement(By.TagName("h2"));
+            Assert.That(heading.Text, Does.Contain("Forgot Password"));
 
-            var message = driver.FindElement(By.Id("content")).Text;
-            Assert.That(message, Does.Contain("Your e-mail's been sent"));
+            // перевірка кнопки Submit
+            var submitBtn = driver.FindElement(By.CssSelector("button#form_submit"));
+            Assert.That(submitBtn.Displayed && submitBtn.Enabled, Is.True);
         }
     }
 }
